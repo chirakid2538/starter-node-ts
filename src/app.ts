@@ -1,7 +1,7 @@
-import express, { Application, Request, Response, NextFunction } from 'express';
+import express, { Application, Request, Response } from 'express';
 import bodyParser from 'body-parser';
 
-export const init = async () => {
+export const init = async (): Promise<Application> => {
 	const app: Application = express();
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({ extended: true }));
@@ -9,6 +9,5 @@ export const init = async () => {
 	app.get('/', (req: Request, res: Response) => {
 		res.send({ status: 'works' });
 	});
-
 	return app;
 };
